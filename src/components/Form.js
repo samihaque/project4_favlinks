@@ -1,11 +1,18 @@
 import { useState } from 'react'
+import '../App.css'
 
-const Form = () => {
-  const handleChange = (event) => {
+const Form = (props) => {
+  
     /*
             TODO - Logic for changing state based on form changes
         */
-  }
+    const [formData, setFormData] = useState({ name: '', URL: '' })
+    const handleChange = (event) => {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value
+      })
+     }
 
   const onFormSubmit = (event) => {
     // to prevent page reload on form submit
@@ -14,13 +21,44 @@ const Form = () => {
     /*
             TODO - Logic for calling props to handle submission and setting state changes
         */
+    props.handleSubmit(formData)
+    setFormData({ name: '', URL: '' })
   }
 
   return (
-    <form>
-      {/* TODO - Logic for returning a form element with labels and inputs for link name and URL */}
-    </form>
+    <div className='left-align'>
+      <form onSubmit={onFormSubmit} >
+        <label>
+          Name:<br/>
+          <div className='padding-10'>
+            <input
+              className=' border width padding-5'
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+        </label>
+        <br />
+        <label>
+          URL:<br/>
+          <div className='padding-10'>
+            <input
+              className=' border padding-5 width '
+              type="text"
+              name="URL"
+              value={formData.URL}
+              onChange={handleChange}
+            />
+          </div>
+        </label>
+        <br />
+        <button type="submit" className='button left-align' >Submit</button>
+      </form>
+    </div>
   )
 }
+
 
 export default Form

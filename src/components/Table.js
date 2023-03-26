@@ -1,15 +1,19 @@
 import React from 'react'
+import LinkContainer from './LinkContainer'
+import "../App.css"
 
 const TableHeader = () => {
   // boilerplate table header functional component
   return (
-    <thead>
+    
+    <thead className='border-buttom-a table-sp-100 left-align'>
       <tr>
-        <th>Name</th>
-        <th>URL</th>
-        <th>Remove</th>
+        <th className='cell-p'>Name</th>
+        <th className='cell-p'>URL</th>
+        <th className='cell-p'>Remove</th>
       </tr>
     </thead>
+    
   )
 }
 
@@ -18,13 +22,13 @@ const TableBody = (props) => {
   // we use Array.map to create table rows from LinkData passed via props
   const rows = props.linkData.map((row, index) => {
     return (
-      <tr key={index}>
-        <td>{row.name}</td>
-        <td>
+      <tr key={index} >
+        <td className='margin-right'>{row.name}</td>
+        <td className='margin-right'>
           <a href={row.URL}>{row.URL}</a>
         </td>
-        <td>
-          <button onClick={() => props.removeLink(index)}>Delete</button>
+        <td className='margin-right'>
+          <button className='button' style={{width: 60}} onClick={() => props.removeLink(index)}>Delete</button>
         </td>
       </tr>
     )
@@ -34,10 +38,17 @@ const TableBody = (props) => {
 }
 
 const Table = (props) => {
-  {
+  
     /*TODO - return <table> component, TableHeader and TableBody  and pass props!*/
-    return <table></table>
-  }
+    return (
+      
+        <table className='table-sp'>
+          <TableHeader />
+          <TableBody linkData={props.linkData} removeLink={props.removeLink} />
+        </table>
+      
+      )
+  
 }
 
 export default Table

@@ -7,6 +7,7 @@ function App() {
     <div className="margin-10">
       <LinkContainer />
     </div>
+    // nothing added, I just changed it's location on my local computer
   )
 }
 

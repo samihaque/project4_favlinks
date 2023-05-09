@@ -25,10 +25,10 @@ const TableBody = (props) => {
       <tr key={index} >
         <td className='margin-right'>{row.name}</td>
         <td className='margin-right'>
-          <a href={row.URL}>{row.URL}</a>
+          <a href={row.url}>{row.url}</a>
         </td>
         <td className='margin-right'>
-          <button className='button' style={{width: 60}} onClick={() => props.removeLink(index)}>Delete</button>
+          <button className='button' style={{width: 60}} onClick={() => {props.removeLink(index); alert("Link Removed")}}>Delete</button>
         </td>
       </tr>
     )
@@ -44,9 +44,11 @@ const Table = (props) => {
       
         <table className='table-sp'>
           <TableHeader />
-          <TableBody linkData={props.linkData} removeLink={props.removeLink} />
+          <TableBody 
+          linkData={props.linkData}
+          removeLink={props.removeLink} />
         </table>
-      
+    
       )
   
 }

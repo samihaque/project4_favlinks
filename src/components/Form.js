@@ -6,7 +6,7 @@ const Form = (props) => {
     /*
             TODO - Logic for changing state based on form changes
         */
-    const [formData, setFormData] = useState({ name: '', URL: '' })
+    const [formData, setFormData] = useState({ name: '', url: '' })
     const handleChange = (event) => {
       setFormData({
         ...formData,
@@ -22,7 +22,7 @@ const Form = (props) => {
             TODO - Logic for calling props to handle submission and setting state changes
         */
     props.handleSubmit(formData)
-    setFormData({ name: '', URL: '' })
+    setFormData({ name: '', url: '' })
   }
 
   return (
@@ -42,13 +42,13 @@ const Form = (props) => {
         </label>
         <br />
         <label>
-          URL:<br/>
+          url:<br/>
           <div className='padding-10'>
             <input
               className=' border padding-5 width '
               type="text"
-              name="URL"
-              value={formData.URL}
+              name="url"
+              value={formData.url}
               onChange={handleChange}
             />
           </div>
